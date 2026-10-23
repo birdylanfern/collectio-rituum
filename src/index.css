@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* `dark:` follows the app's night theme (set as data-theme on <html> by App.tsx) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Every font utility follows the typeface chosen in Settings (--reading-font is set by the app). */
+@theme inline {
+  --font-serif: var(--reading-font);
+  --font-sans: var(--reading-font);
+  --font-mono: var(--reading-font);
+}
+
+@layer base {
+  :root {
+    /* Overwritten at runtime with the typeface picked in Settings (see src/fonts.ts) */
+    --reading-font: 'EB Garamond', 'EB Garamond Symbols', Georgia, 'Times New Roman', serif;
+    --missal-parchment: #fdfbf7;
+    --missal-parchment-dark: #f5eedf;
+    --missal-ink: #1c1917;
+    --missal-ink-secondary: #44403c;
+    --missal-rubric: #b91c1c;
+    --missal-gold: #b45309;
+    --missal-gold-light: #d97706;
+  }
+
+  body {
+    font-family: var(--reading-font);
+    background-color: #12100e;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Scrollbar for Missal look */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(185, 28, 28, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(185, 28, 28, 0.4);
+}
+
+/* Liturgical Drop Caps */
+.liturgical-drop-cap {
+  float: left;
+  font-family: var(--reading-font);
+  font-size: 3.25rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  color: #b91c1c;
+  font-weight: 700;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
+}
+
+/* Rubric font - strictly italicized red as requested */
+.rubric-text {
+  font-family: var(--reading-font);
+  font-style: italic;
+  color: #b91c1c;
+  line-height: 1.5;
+}
+
+/* Latin Cross liturgical notation */
+.cross-mark {
+  color: #b91c1c;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 1px;
+}
+
+/* Versicle and Response symbols */
+.versicle-symbol, .response-symbol {
+  color: #b91c1c;
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* Paper grain subtle texture */
+.paper-texture {
+  background-color: #faf6ee;
+  background-image: radial-gradient(#d3c5aa 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.paper-texture-dark {
+  background-color: #1a1614;
+  background-image: radial-gradient(#2d2420 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Missal ribbon bookmark ribbons */
+.ribbon-tab {
+  width: 14px;
+  height: 38px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ribbon-tab:hover {
+  transform: translateY(4px);
+}
+
+/* Hide the scrollbar on horizontally scrolling chip rows (still scrollable by touch/drag) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

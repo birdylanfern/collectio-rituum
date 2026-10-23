@@ -1,0 +1,25 @@
+/*
+ * Versicle (℣ U+2123) and Response (℟ U+211F) signs.
+ *
+ * EB Garamond contains these two glyphs, but the hosted/standard web builds strip
+ * them out, and the other typefaces offered in Settings don't have them at all.
+ * This tiny file (EB Garamond only, two glyphs per weight) is the fallback that
+ * every typeface stack ends up in whenever the chosen font lacks the sign.
+ * EB Garamond is licensed under the SIL OFL — see OFL-EBGaramond.txt.
+ */
+@font-face {
+  font-family: 'EB Garamond Symbols';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./eb-garamond-symbols-400.woff2') format('woff2');
+  unicode-range: U+211F, U+2123;
+}
+@font-face {
+  font-family: 'EB Garamond Symbols';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./eb-garamond-symbols-700.woff2') format('woff2');
+  unicode-range: U+211F, U+2123;
+}
